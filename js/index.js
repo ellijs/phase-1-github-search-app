@@ -71,21 +71,34 @@ function fetchUserRepo(value) {
     .then((resp) => resp.json())
     .then((json) => {
       console.log(json)
-      pick("ul#user-list").innerHtml = ""
-      json.forEach(renderRepoCards)
+      pick("#repos-list").innerHTML = ""
+      pick("#user-list").innerHTML = ""
+      json.forEach(renderRepoDetail)
     });
     
 }
 
-  function renderRepoCards(obj) {
-    pick("#repos-list").textContentt = (`
-       <div>
-          <div>
-            <h1> Name: ${obj.name} </h1>
-            <a href="https://github.com/${obj.full_name}">Go to repository </a>
-            <p> Forks: ${obj.forks_count}</p>
-            <p> 
-          </div>
-       </div>
-    `)
+  function renderRepoDetail(obj) {
+    let divRepo = newTag("div")
+    let h1Name = newTag("h1")
+    let aLink = newTag("a")
+    let pForks = newTag("p")
+
+    divRepo.append(h1Name, aLink, pForks)
+
+    h1Name.textContent = `Repo Name: ${obj.name}`
+    aLink.href = `https://github.com/${obj.full_name}`
+    aLink.innerHTML = "Go to repositoty"
+    pForks = `Forks: ${obj.forks_count}`
+
+    pick("#repos-list").append(divRepo)
+
+
+    // pick("#repos-list").innerHTML = (`
+    //    <div>
+    //         <h1> Name: ${obj.name} </h1>
+    //         <a href="https://github.com/${obj.full_name}">Go to repository </a>
+    //         <p> Forks: ${obj.forks_count}</p>
+    //    </div>
+    // `)
   }
