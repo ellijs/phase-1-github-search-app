@@ -6,8 +6,33 @@
 
 #github-container {
   display: flex;
+  flex-direction: column;
 }
 
 ul {
   list-style: none;
+}
+
+.objCard {
+  float: left;
+  width: 250px;
+  height: auto;
+  margin: auto;
+  text-align: center;
+}
+
+#avatar-frame {
+  width: 200px;
+  margin: 10px;
+  background: #fecd2f;
+  color: #2d72fc;
+}
+
+#avatar-img {
+  width: 170px;
+  margin: auto;
+}
+
+.center-text {
+  text-align: center;
 }
